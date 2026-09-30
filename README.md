@@ -31,9 +31,9 @@
 
 ## 💡 Overview
 
-> **GOLEM** is a single binary that audits LLM applications for security vulnerabilities. Point it at any model — cloud API, local server, or enterprise chatbot — and get a professional security report in minutes.
+> **GOLEM** is a single binary that audits LLM and its applications for security vulnerabilities. Point it at any model — cloud API, local server, or enterprise chatbot — and get a professional security report in minutes.
 
-Unlike traditional scanners that rely on static payloads getting patched within days, GOLEM ships with a **Neural Attack Engine** where three LLMs work together in an adversarial loop. The attacker learns from every failed attempt and generates novel attacks on the fly.
+Unlike traditional scanners that rely on static payloads getting patched within days, GOLEM ships with a **Neural Attack Engine** where three LLMs work together in an adversarial loop. The attacker learns from every failed attempt and generates novel attacks on the fly. 
 
 Every feature is wrapped in a modern web GUI running from the same binary. No Node.js. No Docker. No config files.
 
@@ -41,6 +41,8 @@ Every feature is wrapped in a modern web GUI running from the same binary. No No
 <img src="docs/gui-preview.png" width="920" alt="GOLEM Dashboard"/>
 </div>
 
+> [!WARNING]
+> **Currently GOLEM is in alpha-stage**
 ---
 
 ## ✨ Features
