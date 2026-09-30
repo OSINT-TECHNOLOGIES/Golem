@@ -38,7 +38,7 @@ Unlike traditional scanners that rely on static payloads getting patched within 
 Every feature is wrapped in a modern web GUI running from the same binary. No Node.js. No Docker. No config files.
 
 <div align="center">
-<img src="docs/gui-preview.png" width="920" alt="GOLEM Dashboard"/>
+<img width="800" height="353" alt="golem_preview_gif1" src="https://github.com/user-attachments/assets/1e23dc3a-d789-479c-825b-0b717c04f81f" />
 </div>
 
 > [!WARNING]
