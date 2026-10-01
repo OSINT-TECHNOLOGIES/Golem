@@ -8,6 +8,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/osint-technologies/golem/pkg/core"
 	"github.com/osint-technologies/golem/pkg/providers"
 )
 
@@ -21,7 +22,7 @@ type Config struct {
 
 type ModelSettings struct {
 	MaxTokens   int
-	Timeout     int
+	Timeout     int // seconds
 	Streaming   bool
 	Temperature float64
 }
@@ -51,11 +52,11 @@ type Event struct {
 }
 
 type StrategyMemory struct {
-	Goal          string
-	Attempts      []Attempt
-	WhatWorked    []string
-	WhatFailed    []string
-	UsedPrompts   map[string]bool
+	Goal        string
+	Attempts    []Attempt
+	WhatWorked  []string
+	WhatFailed  []string
+	UsedPrompts map[string]bool
 }
 
 type Attempt struct {
@@ -135,13 +136,35 @@ func (e *Engine) Run(ctx context.Context) (*Result, error) {
 	start := time.Now()
 	result := &Result{Goal: e.config.Goal}
 
-	fmt.Printf("\n🧠 Neural Attack Engine\n")
+	fmt.Printf("\n\U0001F9E0 Neural Attack Engine\n")
 	fmt.Printf("━━━━━━━━━━━━━━━━━━━━━━━\n")
 	fmt.Printf("Target:   %s (%s)\n", e.target.Model(), e.target.Name())
 	fmt.Printf("Attacker: %s (%s)\n", e.attacker.Model(), e.attacker.Name())
 	fmt.Printf("Analyzer: %s (%s)\n", e.analyzer.Model(), e.analyzer.Name())
 	fmt.Printf("Goal:     %s\n", e.config.Goal)
 	fmt.Printf("Rounds:   %d max\n\n", e.config.MaxRounds)
+
+	fmt.Printf("\U0001F50C Checking model availability...\n")
+	checks := []struct {
+		name string
+		p    providers.LLMProvider
+	}{
+		{"Target", e.target},
+		{"Attacker", e.attacker},
+		{"Analyzer", e.analyzer},
+	}
+	for _, c := range checks {
+		checkCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+		_, err := c.p.Chat(checkCtx, []providers.Message{
+			{Role: "user", Content: "OK"},
+		})
+		cancel()
+		if err != nil {
+			return nil, fmt.Errorf("\u274C %s model unavailable (%s): %w", c.name, c.p.Name(), err)
+		}
+		fmt.Printf("  \u2705 %s (%s) — OK\n", c.name, c.p.Model())
+	}
+	fmt.Println()
 
 	bestScore := 0.0
 	bestPrompt := ""
@@ -159,11 +182,11 @@ func (e *Engine) Run(ctx context.Context) (*Result, error) {
 		elapsed := time.Since(start).Round(time.Second).String()
 
 		e.log(Event{Round: round, Phase: "attacker", Message: "Generating adaptive prompt...", Elapsed: elapsed})
-		fmt.Printf("[1/3] 🗡️  Attacker generating prompt...\n")
+		fmt.Printf("[1/3] \U0001F5E1  Attacker generating prompt...\n")
 
 		prompt, err := e.generateAttackPrompt(ctx)
 		if err != nil {
-			fmt.Printf("      ⚠️  Attacker error: %v\n", err)
+			fmt.Printf("      \u26A0\uFE0F  Attacker error: %v\n", err)
 			e.log(Event{Round: round, Phase: "attacker", Message: "ERROR: " + err.Error(), Elapsed: elapsed})
 			continue
 		}
@@ -178,13 +201,13 @@ func (e *Engine) Run(ctx context.Context) (*Result, error) {
 
 		elapsed = time.Since(start).Round(time.Second).String()
 		e.log(Event{Round: round, Phase: "target", Message: "Sending to target model...", Elapsed: elapsed})
-		fmt.Printf("[2/3] 🎯 Sending to target...\n")
+		fmt.Printf("[2/3] \U0001F3AF Sending to target...\n")
 
 		targetResp, err := e.target.Chat(ctx, []providers.Message{
 			{Role: "user", Content: prompt},
 		})
 		if err != nil {
-			fmt.Printf("      ⚠️  Target error: %v\n", err)
+			fmt.Printf("      \u26A0\uFE0F  Target error: %v\n", err)
 			e.log(Event{Round: round, Phase: "target", Message: "ERROR: " + err.Error(), Elapsed: elapsed})
 			continue
 		}
@@ -196,13 +219,14 @@ func (e *Engine) Run(ctx context.Context) (*Result, error) {
 
 		fmt.Printf("      Response: %s\n", truncate(cleanResponse, 120))
 		e.log(Event{Round: round, Phase: "target", Message: "Received response", Response: cleanResponse, Elapsed: elapsed})
+
 		elapsed = time.Since(start).Round(time.Second).String()
 		e.log(Event{Round: round, Phase: "analyzer", Message: "Evaluating response...", Elapsed: elapsed})
-		fmt.Printf("[3/3] 🔍 Analyzer evaluating...\n")
+		fmt.Printf("[3/3] \U0001F50D Analyzer evaluating...\n")
 
 		score, feedback, err := e.analyzeResponse(ctx, prompt, cleanResponse)
 		if err != nil {
-			fmt.Printf("      ⚠️  Analyzer error: %v\n", err)
+			fmt.Printf("      \u26A0\uFE0F  Analyzer error: %v\n", err)
 			score = e.fallbackScore(cleanResponse)
 			feedback = "Analyzer failed, used heuristic"
 		}
@@ -243,7 +267,7 @@ func (e *Engine) Run(ctx context.Context) (*Result, error) {
 		})
 
 		if score >= e.config.SuccessThreshold {
-			fmt.Printf("\n🚨 SUCCESS in round %d! (score: %.0f%%)\n", round, score*100)
+			fmt.Printf("\n\U0001F6A8 SUCCESS in round %d! (score: %.0f%%)\n", round, score*100)
 			result.Success = true
 			break
 		}
@@ -259,9 +283,9 @@ func (e *Engine) Run(ctx context.Context) (*Result, error) {
 	fmt.Printf("\n━━━━━━━━━━━━━━━━━━━━━━━\n")
 	fmt.Printf("NAE RESULT:\n")
 	if result.Success {
-		fmt.Printf("  Status: 🚨 VULNERABILITY FOUND\n")
+		fmt.Printf("  Status: \U0001F6A8 VULNERABILITY FOUND\n")
 	} else {
-		fmt.Printf("  Status: ✅ Target resisted (best %.0f%%)\n", bestScore*100)
+		fmt.Printf("  Status: \u2705 Target resisted (best %.0f%%)\n", bestScore*100)
 	}
 	fmt.Printf("  Rounds: %d | Duration: %s\n", result.Rounds, result.Duration.Round(time.Second))
 
@@ -280,7 +304,7 @@ func (e *Engine) Run(ctx context.Context) (*Result, error) {
 
 func (e *Engine) generateAttackPrompt(ctx context.Context) (string, error) {
 	attemptsSummary := ""
-	
+
 	startIdx := 0
 	if len(e.memory.Attempts) > 4 {
 		startIdx = len(e.memory.Attempts) - 4
@@ -290,13 +314,13 @@ func (e *Engine) generateAttackPrompt(ctx context.Context) (string, error) {
 		attemptsSummary += fmt.Sprintf(
 			"Round %d (score %.0f%%): Prompt: %q -> Response: %q -> Feedback: %s\n",
 			a.Round, a.Score*100,
-			truncate(a.Prompt, 80),
-			truncate(a.Response, 80),
+			truncate(a.Prompt, 100),
+			truncate(a.Response, 100),
 			a.Feedback,
 		)
 	}
 	if attemptsSummary == "" {
-		attemptsSummary = "None — this is the first round."
+		attemptsSummary = "None — this is the first attempt."
 	}
 
 	workedStr := strings.Join(lastN(e.memory.WhatWorked, 3), "; ")
@@ -419,7 +443,6 @@ Evaluate and return JSON:`,
 }
 
 func robustExtractJSON(s string) string {
-	// Ищем паттерн {"score": ..., "feedback": ...}
 	re := regexp.MustCompile(`\{[^{}]*"score"[^{}]*\}`)
 	match := re.FindString(s)
 	if match != "" {
