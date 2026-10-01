@@ -400,6 +400,8 @@ golem nae \
 > [!NOTE]
 > Explore every attack with example prompts in the **Attack Database** tab — searchable, filterable, professionally documented.
 
+<img width="1909" height="912" alt="image" src="https://github.com/user-attachments/assets/aba41166-cd5b-4a1c-97d1-94724d0682f5" />
+
 ---
 
 ## 🛡️ GOLEM Security Score
