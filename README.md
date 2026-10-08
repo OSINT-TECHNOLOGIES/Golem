@@ -7,7 +7,7 @@
 <p><b>Extensive AI Red Team Platform</b></p>
 
 <p>
-  <em>Test LLMs. Find every vulnerability. Ship secure models.</em>
+  <em>Probe any model. Prove its security.</em>
 </p>
 
 <p>
