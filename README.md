@@ -2,7 +2,7 @@
 
 <img width="850" alt="GOLEM Banner" src="https://github.com/user-attachments/assets/6586fc78-3ee8-41a9-88bb-c92f07caf27a" />
 
-# 🔴 G O L E M
+# G O L E M
 
 ### The Next-Gen AI Red Team Platform
 
