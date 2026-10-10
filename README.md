@@ -192,6 +192,10 @@ Hits, safes, and errors color-coded with real-time confidence scores. Click any 
 **The world's first open-source AI-vs-AI adaptive red teaming.**
 
 </div>
+<div align="center">
+
+<img width="800" height="432" alt="nae-demo" src="https://github.com/user-attachments/assets/ee756576-52b1-4b70-8680-0b5269d9f328" />
+</div>
 
 Static payloads get patched within days. GOLEM's Neural Attack Engine doesn't care — it generates new attacks on the fly, learning from every attempt.
 
