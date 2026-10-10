@@ -208,7 +208,7 @@ Released under the [MIT License](LICENSE).
 
 <br/>
 
-**If GOLEM helped you secure your AI models, please star this repo ⭐**
+**If you liked using GOLEM, please star this repo ⭐**
 
 <sub>Built by <a href="https://github.com/OSINT-TECHNOLOGIES">OSINT-TECHNOLOGIES</a> for the AI security community.</sub>
 
