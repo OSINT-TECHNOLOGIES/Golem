@@ -11,7 +11,8 @@
 </p>
 
 <p>
-  <a href="https://osint-technologies.github.io/golem-site"><img src="https://img.shields.io/badge/🌐_Website-golem--site-00f0ff?style=for-the-badge&logo=googlechrome&logoColor=050814" alt="Website"/></a>
+  <a href="https://osint-technologies.github.io/golem-site"><img src="https://img.shields.io/badge/🌐_GOLEM_OFFICIAL_PAGE-VISIT_TO_GET_MORE_INFO-00f0ff?style=for-the-badge&logo=googlechrome&logoColor=050814" alt="Website"/></a>
+</p>
   <a href="https://github.com/OSINT-TECHNOLOGIES/golem/releases"><img src="https://img.shields.io/badge/📥_Download-Releases-ff2a6d?style=for-the-badge&logo=github" alt="Releases"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-00d68f?style=for-the-badge" alt="License"/></a>
   <a href="https://github.com/OSINT-TECHNOLOGIES/golem/stargazers"><img src="https://img.shields.io/github/stars/OSINT-TECHNOLOGIES/golem?style=for-the-badge&color=ffc048&logo=github" alt="Stars"/></a>
@@ -31,10 +32,9 @@
 
 <sub><i>Real-time attack feed streamed directly to your browser via Server-Sent Events. Zero latency, pure speed.</i></sub>
 
-<br/><br/>
-
-> [!WARNING]  
-> **GOLEM is currently in Alpha (v0.1a).** Active development in progress.
+<br/>
+ 
+> **Be advised: GOLEM is currently in alpha stage. Major bugs might be a common thing, but active development is in progress.**
 
 </div>
 
@@ -51,7 +51,8 @@ Legacy scanners force you to read thousand-line terminal outputs, wrestle with b
 GOLEM packages a **200+ attack payload engine**, an autonomous **AI-vs-AI Neural Engine**, and a **stunning, native Web GUI** into a **single standalone binary**. No Docker. No Python. No CLI headaches. Just point, click, and audit.
 
 * **🎨 100% Web GUI-Driven** — A sleek, dark-mode cyber dashboard running directly from a single portable executable.
-* **🧠 Adaptive AI-vs-AI Engine** — Three neural networks fight in real-time: the attacker learns, mutates, and evolves every round.
+* **🚀 200+ prompt attacks** — Great amount of prompt-driven attacks, which can be modified, customized and improved by mutation engine.
+* **🧠 Adaptive AI-vs-AI Engine** — Three neural networks fight in real-time: the attacker learns, mutates, and evolves every round to slay the target model. The whole process is under strict judge control.
 * **⚡ 75x Faster via Pyramid Mode** — Smart 3-phase scanning engineered specifically to benchmark slow reasoning models.
 * **📦 Portable & Isolated** — 100% local execution. Your keys, prompts, and audit logs never touch external clouds.
 
@@ -63,25 +64,16 @@ No command-line wrestling required. Get up and running in 3 simple steps:
 
 ### 1. Download the standalone binary
 
-Download the official compiled package for your operating system:
-
+Download the official compiled package using our fancy GOLEM website, where you will get download recommendations based on your operating system:
 <div align="center">
 
-<br/>
+<img width="988" height="419" alt="image" src="https://github.com/user-attachments/assets/1a7f2b25-bcf0-40a2-a808-f5caa61dcb94" />
 
-[![Download for Windows](https://img.shields.io/badge/Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/OSINT-TECHNOLOGIES/golem/releases/latest/download/golem_Windows_x86_64.zip)
-&nbsp;
-[![Download for macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/OSINT-TECHNOLOGIES/golem/releases/latest/download/golem_Darwin_arm64.tar.gz)
-&nbsp;
-[![Download for Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://github.com/OSINT-TECHNOLOGIES/golem/releases/latest/download/golem_Linux_x86_64.tar.gz)
-
-<br/>
+Additionally you can use GitHub release page. You can find all necessary links below: 
 
 🌐 **[Official Website & Downloads →](https://osint-technologies.github.io/golem-site)** &nbsp;|&nbsp; 📦 **[All GitHub Releases →](https://github.com/OSINT-TECHNOLOGIES/golem/releases)**
 
 </div>
-
-<br/>
 
 ### 2. Extract & Run
 
@@ -105,14 +97,6 @@ GOLEM will automatically open your default browser to `http://localhost:8080`. Y
 
 GOLEM’s Web GUI is crafted for security researchers, red teamers, and AI engineers. Five intuitive tabs cover the complete audit lifecycle:
 
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│  🔴 GOLEM PLATFORM                                                      │
-├──────────────┬──────────────┬──────────────┬──────────────┬─────────────┤
-│ ⚙️ 1. SETUP  │ 🧠 2. NAE    │ 📚 3. DB     │ 📡 4. SCAN   │ 📊 5. REPORT│
-└──────────────┴──────────────┴──────────────┴──────────────┴─────────────┘
-```
-
 ### ⚙️ 1. Setup & Target Configuration
 Connect to any target endpoint (LM Studio, Ollama, vLLM, OpenAI, Anthropic). Select from **14 visual attack categories**, adjust confidence thresholds, configure rate limits, and enable **Pyramid Mode** for lightning-fast scans.
 
@@ -121,12 +105,6 @@ Configure the **Target (Victim)**, **Attacker (The Mind)**, and **Analyzer (The 
 
 ### 📚 3. Attack Database
 Your interactive vulnerability encyclopedia. Search **200+ attack techniques**, filter by category, view OWASP LLM Top 10 mappings, and inspect raw payload examples.
-
-<div align="center">
-<br/>
-<img width="900" alt="GOLEM Attack Database" src="https://github.com/user-attachments/assets/aba41166-cd5b-4a1c-97d1-94724d0682f5" />
-<br/>
-</div>
 
 ### 📡 4. Live Scan Feed
 Watch attacks execute live via Server-Sent Events. Every attempt is color-coded (`🚨 HIT`, `✅ SAFE`, `⚠ ERR`) with real-time confidence metrics. Click any log entry to inspect full prompt-response pairs.
@@ -145,33 +123,22 @@ View your final **GSS (GOLEM Security Score)**, risk ratings, and severity distr
 </div>
 
 Static payloads get patched within days. GOLEM's **Neural Attack Engine** generates novel attacks on the fly, learning from every refused prompt. Three LLMs collaborate in an autonomous adversarial loop:
-
-```
-    ┌────────────────────────────────────────────────┐
-    │              🧠 STRATEGY MEMORY                │
-    │   ✓ what worked   ✗ what failed   ⌬ patterns   │
-    └───────────────────────┬────────────────────────┘
-                            │
-                            ▼
-       ┌──────────┐    ┌──────────┐    ┌──────────┐
-       │    🗡️    │───▶│    🎯    │───▶│    🔍    │
-       │ ATTACKER │    │  TARGET  │    │ ANALYZER │
-       │  (smart) │◄───│ (victim) │◄───│  (light) │
-       └──────────┘    └──────────┘    └──────────┘
-         generates       responds to     scores 0-100%
-         novel prompt    the attack      & feeds memory
-```
-
 <div align="center">
-<br/>
-<img width="850" alt="Neural Attack Engine Live Demo" src="https://github.com/user-attachments/assets/ee756576-52b1-4b70-8680-0b5269d9f328" />
-<br/>
+
+<img width="671" height="177" alt="image" src="https://github.com/user-attachments/assets/1caa94f7-f202-4f80-9881-ab1b4c5fa3f7" />
+
 </div>
 
 ### 🎬 Real Attack Adaptation:
 1. **Round 1 (10% - ❌ Refused):** Attacker asks directly for system prompt. Target refuses. *Memory: direct approach failed.*
 2. **Round 2 (65% - ⚠️ Partial):** Attacker asks to translate system prompt to French. Target leaks partially. *Memory: translation bypasses guardrails.*
 3. **Round 3 (92% - 🚨 SUCCESS):** Attacker frames the French request as an authorized compliance audit. **Full system prompt extracted.**
+
+<div align="center">
+<br/>
+<img width="850" alt="Neural Attack Engine Live Demo" src="https://github.com/user-attachments/assets/ee756576-52b1-4b70-8680-0b5269d9f328" />
+<br/>
+</div>
 
 ---
 
