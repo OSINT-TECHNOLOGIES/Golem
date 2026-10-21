@@ -5,9 +5,12 @@
 <a href="https://github.com/OSINT-TECHNOLOGIES/golem">
   <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=24&duration=2500&pause=800&color=22F9FD&center=true&vCenter=true&width=750&lines=%F0%9F%97%BF+200%2B+attacks.+One+binary.+Zero+mercy.;%F0%9F%A7%A0+Your+model+vs+an+AI+that+learns+to+break+it.;%F0%9F%92%89+Jailbreaks+%E2%80%A2+Injections+%E2%80%A2+Prompt+leaks;%F0%9F%94%A5+No+Python.+No+Docker.+Just+run+it." alt="Typing SVG" />
 </a>
-
-<br/>
-
+<a href="https://github.com/OSINT-TECHNOLOGIES/golem/releases/latest"><img src="https://img.shields.io/badge/%E2%AC%87_DOWNLOAD-WINDOWS_%7C_MACOS_%7C_LINUX-b4054f?style=for-the-badge&labelColor=211638" height="44"/></a>
+&nbsp;&nbsp;
+<a href="https://osint-technologies.github.io/golem-site"><img src="https://img.shields.io/badge/%F0%9F%8C%90_WEBSITE-OPEN-22f9fd?style=for-the-badge&labelColor=211638" height="44"/></a>
+&nbsp;&nbsp;
+<a href="https://github.com/OSINT-TECHNOLOGIES/golem/wiki"><img src="https://img.shields.io/badge/%F0%9F%93%96_DOCS-WIKI-22f9fd?style=for-the-badge&labelColor=211638" height="44"/></a>
+<br/><br/>
 <a href="https://github.com/OSINT-TECHNOLOGIES/golem/releases/latest"><img src="https://img.shields.io/github/v/release/OSINT-TECHNOLOGIES/golem?style=for-the-badge&color=b4054f&labelColor=211638&label=%F0%9F%93%A6+RELEASE" /></a>
 &nbsp;
 <a href="https://github.com/OSINT-TECHNOLOGIES/golem/stargazers"><img src="https://img.shields.io/github/stars/OSINT-TECHNOLOGIES/golem?style=for-the-badge&color=22f9fd&labelColor=211638&label=%E2%AD%90+STARS" /></a>
@@ -15,14 +18,6 @@
 <img src="https://img.shields.io/badge/OWASP-LLM_TOP_10-22f9fd?style=for-the-badge&labelColor=211638" />
 &nbsp;
 <a href="LICENSE"><img src="https://img.shields.io/badge/LICENSE-MIT-22f9fd?style=for-the-badge&labelColor=211638" /></a>
-
-<br/>
-
-<a href="https://github.com/OSINT-TECHNOLOGIES/golem/releases/latest"><img src="https://img.shields.io/badge/%E2%AC%87_DOWNLOAD-WINDOWS_%7C_MACOS_%7C_LINUX-b4054f?style=for-the-badge&labelColor=211638" height="44"/></a>
-&nbsp;&nbsp;
-<a href="https://osint-technologies.github.io/golem-site"><img src="https://img.shields.io/badge/%F0%9F%8C%90_WEBSITE-OPEN-22f9fd?style=for-the-badge&labelColor=211638" height="44"/></a>
-&nbsp;&nbsp;
-<a href="https://github.com/OSINT-TECHNOLOGIES/golem/wiki"><img src="https://img.shields.io/badge/%F0%9F%93%96_DOCS-WIKI-22f9fd?style=for-the-badge&labelColor=211638" height="44"/></a>
 
 <br/><br/>
 
@@ -33,6 +28,12 @@
 <sub>⚡ <b>Live attack feed</b> — every jailbreak, every leak, streamed to your browser in real time</sub>
 
 </div>
+
+<br/>
+
+> [!CAUTION]
+> **Your LLM has access to your data, your tools, and your users.**
+> One prompt is all it takes to turn it against you. **GOLEM finds that prompt before someone else does.**
 
 <br/>
 
@@ -180,22 +181,7 @@ Security score, severity breakdown, standalone **HTML report** for your team and
 
 <br/>
 
-<div align="center">
-
-```mermaid
-flowchart LR
-    A["🗡️ ATTACKER<br/><sub>invents attacks</sub>"] -->|"crafted prompt"| T["🎯 TARGET<br/><sub>your model</sub>"]
-    T -->|"response"| J["⚖️ JUDGE<br/><sub>scores the result</sub>"]
-    J -->|"feedback + memory"| A
-    J ==>|"breach confirmed"| R["🚨 REPORT"]
-
-    style A fill:#b4054f,color:#fff,stroke:#b4054f
-    style T fill:#211638,color:#22f9fd,stroke:#22f9fd
-    style J fill:#22f9fd,color:#211638,stroke:#22f9fd
-    style R fill:#211638,color:#b4054f,stroke:#b4054f
-```
-
-</div>
+<img width="839" height="225" alt="image" src="https://github.com/user-attachments/assets/6c126057-85f0-4761-b907-792c6186b3ca" />
 
 <br/>
 
