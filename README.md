@@ -19,11 +19,9 @@
 &nbsp;
 <a href="LICENSE"><img src="https://img.shields.io/badge/LICENSE-MIT-22f9fd?style=for-the-badge&labelColor=211638" /></a>
 
-<br/><br/>
-
-<img src="https://github.com/user-attachments/assets/1e23dc3a-d789-479c-825b-0b717c04f81f" width="94%" style="border-radius:12px; border: 2px solid #b4054f;" alt="GOLEM in action"/>
-
 <br/>
+
+<img width="800" height="353" alt="golem_preview_gif1" src="https://github.com/user-attachments/assets/c9000e9c-260c-405c-bcbe-be078ef0f269" />
 
 <sub>⚡ <b>Live attack feed</b> — every jailbreak, every leak, streamed to your browser in real time</sub>
 
