@@ -7,7 +7,7 @@
 </a>
 <a href="https://github.com/OSINT-TECHNOLOGIES/golem/releases/latest"><img src="https://img.shields.io/badge/%E2%AC%87_DOWNLOAD-WINDOWS_%7C_MACOS_%7C_LINUX-b4054f?style=for-the-badge&labelColor=211638" height="44"/></a>
 &nbsp;&nbsp;
-<a href="https://osint-technologies.github.io/golem-site"><img src="https://img.shields.io/badge/%F0%9F%8C%90_WEBSITE-OPEN-22f9fd?style=for-the-badge&labelColor=211638" height="44"/></a>
+<a href="https://osint-technologies.github.io/Golem/"><img src="https://img.shields.io/badge/%F0%9F%8C%90_WEBSITE-OPEN-22f9fd?style=for-the-badge&labelColor=211638" height="44"/></a>
 &nbsp;&nbsp;
 <a href="https://github.com/OSINT-TECHNOLOGIES/golem/wiki"><img src="https://img.shields.io/badge/%F0%9F%93%96_DOCS-WIKI-22f9fd?style=for-the-badge&labelColor=211638" height="44"/></a>
 <br/><br/>
