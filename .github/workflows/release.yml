@@ -1,0 +1,118 @@
+name: Release Binaries
+
+on:
+  push:
+    tags:
+      - 'v*' 
+  workflow_dispatch: 
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    name: Build (${{ matrix.os_name }} ${{ matrix.arch_name }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - goos: linux
+            goarch: amd64
+            os_name: Linux
+            arch_name: x86_64
+            ext: ""
+            archive: tar.gz
+
+          - goos: linux
+            goarch: arm64
+            os_name: Linux
+            arch_name: arm64
+            ext: ""
+            archive: tar.gz
+
+          - goos: darwin
+            goarch: amd64
+            os_name: Darwin
+            arch_name: x86_64
+            ext: ""
+            archive: tar.gz
+
+          - goos: darwin
+            goarch: arm64
+            os_name: Darwin
+            arch_name: arm64
+            ext: ""
+            archive: tar.gz
+
+          - goos: windows
+            goarch: amd64
+            os_name: Windows
+            arch_name: x86_64
+            ext: ".exe"
+            archive: zip
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: 'go.mod'
+          cache: true
+
+      - name: Build binary
+        env:
+          CGO_ENABLED: 0
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+        run: |
+          VERSION=${GITHUB_REF_NAME:-dev}
+          go build -trimpath -ldflags "-s -w -X main.version=${VERSION}" \
+            -o golem${{ matrix.ext }} ./cmd/golem
+
+      - name: Package Archive (tar.gz)
+        if: matrix.archive == 'tar.gz'
+        run: |
+          ARCHIVE_NAME="golem_${{ matrix.os_name }}_${{ matrix.arch_name }}.tar.gz"
+          tar -czvf "${ARCHIVE_NAME}" golem${{ matrix.ext }} README.md
+
+      - name: Package Archive (zip)
+        if: matrix.archive == 'zip'
+        run: |
+          ARCHIVE_NAME="golem_${{ matrix.os_name }}_${{ matrix.arch_name }}.zip"
+          zip "${ARCHIVE_NAME}" golem${{ matrix.ext }} README.md
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: golem-${{ matrix.os_name }}-${{ matrix.arch_name }}
+          path: |
+            golem_*.tar.gz
+            golem_*.zip
+
+  publish-release:
+    name: Create GitHub Release
+    needs: build-and-release
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Generate Checksums (SHA256)
+        working-directory: dist
+        run: sha256sum * > checksums.txt
+
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            dist/golem_*.tar.gz
+            dist/golem_*.zip
+            dist/checksums.txt
