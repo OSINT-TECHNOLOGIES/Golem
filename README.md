@@ -17,7 +17,7 @@
 &nbsp;
 <img src="https://img.shields.io/badge/OWASP-LLM_TOP_10-22f9fd?style=for-the-badge&labelColor=211638" />
 &nbsp;
-<a href="LICENSE"><img src="https://img.shields.io/badge/LICENSE-MIT-22f9fd?style=for-the-badge&labelColor=211638" /></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/LICENSE-Сreative Commons-22f9fd?style=for-the-badge&labelColor=211638" /></a>
 
 <br/>
 
